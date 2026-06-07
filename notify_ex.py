@@ -40,5 +40,4 @@ for g in goods:
 
 if trigger:
     for bark in barks:
-        for bark in barks:
-            requests.get(f'{bark}/远行商人 - {current["round"]["date"]} {current["round"]["slot"]}/{" ".join(goods)}?level=critical&volume=5&call=1')
+        requests.get(f'{bark}/远行商人 - {current["round"]["date"]} {current["round"]["slot"]}/{" ".join(goods)}?level=critical&volume=5&call=1')

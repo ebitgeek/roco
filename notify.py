@@ -20,9 +20,22 @@ def notify():
         for item in current['round']['items']:
             goods.append(item['name'])
 
-        for bark in barks:
-            requests.get(f'{bark}/远行商人 - {current["round"]["date"]} {current["round"]["slot"]}/{" ".join(goods)}')
+        trigger = False
+        trigger_keys = ['棱镜', '祝福', '炫彩', '国王']
+        for g in goods:
+            for t in trigger_keys:
+                if t in g:
+                    trigger = True
+
+        if trigger:
+            for bark in barks:
+                requests.get(f'{bark}/远行商人 - {current["round"]["date"]} {current["round"]["slot"]}/{" ".join(goods)}')
+
+
     except Exception as e:
         requests.get(f'{admin_bark}/远行商人/发送通知出错：{e}')
         traceback.print_exc()
         raise e
+
+if __name__ == '__main__':
+    notify()
