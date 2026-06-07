@@ -8,8 +8,15 @@ barks = [
     'https://api.day.app/jgNgRjp5e2oKqrtWa8Ev3g'
 ]
 
-with open('public/json/merchant-current.json', 'r', encoding='utf-8') as f:
-    current = json.load(f)
+try:
+    r = requests.get('https://www.taptap.cn/ug-apis/roco/v1/merchant/current', headers=headers)
+    print(r.text)
+    current = r.json()
+except Exception as e:
+    print(f'current err: {e}')
+    traceback.print_exc()
+    requests.get(f'{admin_bark}/远行商人/更新当前商品出错:{e}')
+    raise e
 
 print(current)
 
