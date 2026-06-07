@@ -2,7 +2,7 @@ name: Update Merchant Data
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   # 每30分钟
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout data branch
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
-          ref: data   # ⭐关键：只拉 data 分支
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -25,9 +25,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests || true
+          pip install -r requirements.txt || true
 
-      - name: Run update script
+      - name: Run script
         run: |
           python update_merchant.py
 
@@ -42,6 +42,6 @@ jobs:
 
           git commit -m "chore: update merchant data"
 
-      - name: Push to data branch
+      - name: Push changes
         run: |
-          git push origin data
+          git push origin main
