@@ -6,7 +6,6 @@ import {
     Typewriter
 } from 'animal-island-ui'
 import {useEffect, useState} from "react";
-import MerchantTimeline from "./components/MerchantTimeline.jsx";
 
 function App() {
     const [data, setData] = useState(null);
@@ -48,9 +47,6 @@ function App() {
                     </p>
                 </Typewriter>
             </div>
-
-            <MerchantTimeline />
-
 
             <Card className="mb-6" type="dashed">
                 当前班次：{data.round.date} {data.round.slot}
