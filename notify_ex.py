@@ -32,7 +32,7 @@ except Exception as e:
     raise e
 
 trigger = False
-trigger_keys = ['棱镜', '祝福', '残缺']
+trigger_keys = ['棱镜', '祝福']
 for g in goods:
     for t in trigger_keys:
         if t in g:
