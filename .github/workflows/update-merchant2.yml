@@ -1,4 +1,4 @@
-name: update-merchant
+name: update-merchant2
 
 on:
   schedule:
