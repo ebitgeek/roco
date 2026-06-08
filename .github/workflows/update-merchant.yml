@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   update:
@@ -32,16 +33,31 @@ jobs:
           python update_merchant.py
 
       - name: Commit changes
+        id: commit_changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
           git add public/json/merchant-current.json
 
-          git diff --cached --quiet && echo "No changes" && exit 0
+          if git diff --cached --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
 
           git commit -m "chore: update merchant data"
-
-      - name: Push changes
-        run: |
           git push origin main
+
+          echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Trigger Deploy
+        if: steps.commit_changes.outputs.changed == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'deploy.yml',
+              ref: 'main'
+            })

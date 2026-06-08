@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main   # 👈 你用 main 就 main，用 master 就改
+  workflow_dispatch:
 
 permissions:
   contents: read

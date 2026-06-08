@@ -14,7 +14,6 @@ with open('public/json/merchant-current.json', 'r', encoding='utf-8') as f:
 
 current = {}
 
-requests.get(f'{admin_bark}/远行商人/我被执行了')
 
 try:
     r = requests.get('https://www.taptap.cn/ug-apis/roco/v1/merchant/current', headers=headers)
