@@ -2,10 +2,10 @@ name: Notify Ex Script
 
 on:
   schedule:
-    - cron: "0 3 * * *"   # 11:00 北京时间
-    - cron: "0 7 * * *"   # 15:00 北京时间
-    - cron: "0 11 * * *"  # 19:00 北京时间
-    - cron: "0 15 * * *"  # 23:00 北京时间
+    - cron: "0 2 * * *"   # 11:00 北京时间
+    - cron: "0 6 * * *"   # 15:00 北京时间
+    - cron: "0 10 * * *"  # 19:00 北京时间
+    - cron: "0 14 * * *"  # 23:00 北京时间
   workflow_dispatch:
 
 permissions:
