@@ -45,6 +45,7 @@ try:
     if current['round']['round_id'] != old_current['round']['round_id']:
         print('班次已经改变')
         notify.notify()
+
     with open('public/json/merchant-current.json', 'w', encoding='utf-8') as current_json_f:
         json.dump(current, current_json_f)
     with open('public/json/merchant-history.json', 'w', encoding='utf-8') as history_json_f:

@@ -1,4 +1,5 @@
-name: Update Merchant Data
+# refresh
+name: update-merchant-data
 
 on:
   schedule:
