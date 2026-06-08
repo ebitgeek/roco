@@ -39,7 +39,7 @@ jobs:
           git config user.email "github-actions@github.com"
 
           git add public/json/merchant-current.json
-          git add public/json/merchant-hisotry.json
+          git add public/json/merchant-history.json
 
           if git diff --cached --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
