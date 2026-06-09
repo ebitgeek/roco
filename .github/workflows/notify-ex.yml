@@ -1,4 +1,4 @@
-name: Notify Ex Script
+name: notify-ex
 
 on:
   schedule:
